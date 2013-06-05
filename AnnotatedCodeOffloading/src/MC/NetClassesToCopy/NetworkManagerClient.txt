@@ -17,6 +17,7 @@ public class NetworkManagerClient {
     ObjectOutputStream oos = null;
     byte []serverAddress =new byte[4];
     CloudController callingparent = null;
+    long startTime = 0;
 
     public NetworkManagerClient(byte[] serverAddress, int port) {
 
@@ -33,6 +34,8 @@ public class NetworkManagerClient {
         mysocket = new Socket();
         try {
             mysocket.connect(new InetSocketAddress(Inet4Address.getByAddress(serverAddress), portnum), NetInfo.waitTime);
+
+            startTime = System.currentTimeMillis();
             in = mysocket.getInputStream();
             out = mysocket.getOutputStream();
 
@@ -48,9 +51,9 @@ public class NetworkManagerClient {
 
 
 
-    public void send(String functionName, Class[] funcArgDataTypes, Object[] funcArgValues, Object state, Class stateDType){
+    public void send(String functionName, Class[] paramTypes, Object[] funcArgValues, Object state, Class stateDType){
         try{
-            new Sending(new Pack(functionName, stateDType, state, funcArgValues, funcArgDataTypes)).send();
+            new Sending(new Pack(functionName, stateDType, state, funcArgValues, paramTypes)).send();
         }catch(Exception ex){
             callingparent.setResult(null, null);
         }
@@ -81,10 +84,12 @@ public class NetworkManagerClient {
 
                 result = (ResultPack) ois.readObject();
 
-                if(result == null){
-                    callingparent.setResult(null, null);
-                }else
-                    callingparent.setResult(result.getresult(), result.getstate());
+                if((System.currentTimeMillis() - startTime) < NetInfo.waitTime){
+                    if(result == null)
+                        callingparent.setResult(null, null);
+                    else
+                        callingparent.setResult(result.getresult(), result.getstate());
+                }
 
                 oos.close();
                 ois.close();

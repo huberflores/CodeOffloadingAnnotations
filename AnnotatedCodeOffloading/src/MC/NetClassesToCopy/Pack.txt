@@ -7,15 +7,15 @@ public class Pack implements Serializable{
     String functionName = null;
     Class stateType = null;
     Object state = null;
-    Object[] FuncArgValues = null;
-    Class[] FuncDTypes = null;
+    Object[] paramValues = null;
+    Class[] paramTypes = null;
 
-    public Pack(String functionName, Class stateType, Object state, Object[] FuncArgValues, Class[] FuncDTypes) {
+    public Pack(String functionName, Class stateType, Object state, Object[] paramValues, Class[] FuncDTypes) {
         this.functionName = functionName;
         this.stateType = stateType;
         this.state = state;
-        this.FuncArgValues = FuncArgValues;
-        this.FuncDTypes = FuncDTypes;
+        this.paramValues = paramValues;
+        this.paramTypes = FuncDTypes;
     }
 
     public String getfunctionName(){
@@ -26,12 +26,12 @@ public class Pack implements Serializable{
         return stateType;
     }
 
-    public Object[] getFuncArgValues(){
-        return FuncArgValues;
+    public Object[] getparamValues(){
+        return paramValues;
     }
 
-    public Class[] getFuncDTypes(){
-        return FuncDTypes;
+    public Class[] getparamTypes(){
+        return paramTypes;
     }
 
     public Object getstate(){

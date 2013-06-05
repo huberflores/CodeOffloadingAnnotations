@@ -54,13 +54,13 @@ public class CloudController {
         synchronized (waitob){
             this.result = result;
             this.state = cloudModel;
-            waitob.notifyAll();
+            waitob.notify();
         }
     }
 
     class StartNetwork implements Runnable{
         Method toExecute;
-        Class[] funcParDataTypes;
+        Class[] paramTypes;
         Object[] paramValues;
         Object state = null;
         Class stateDataType = null;
@@ -68,7 +68,7 @@ public class CloudController {
 
         public StartNetwork(Method toExecute, Object[] paramValues, Object state, Class stateDataType) {
             this.toExecute = toExecute;
-            funcParDataTypes = toExecute.getParameterTypes();
+            this.paramTypes = toExecute.getParameterTypes();
             this.paramValues = paramValues;
             this.state = state;
             this.stateDataType = stateDataType;
@@ -79,7 +79,7 @@ public class CloudController {
         public void run() {
             boolean isconnected = NM.connect();
             if(isconnected){
-                NM.send(toExecute.getName(), funcParDataTypes, paramValues, state, stateDataType);
+                NM.send(toExecute.getName(), paramTypes, paramValues, state, stateDataType);
             }
         }
 

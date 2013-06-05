@@ -12,9 +12,11 @@
 package MC;
 
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +41,20 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
 
+        try {
+            new File("./src/MC/NetClassesToCopy").mkdirs();
+            copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File("./src/MC/NetClassesToCopy/Cloud.txt"));
+            copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File("./src/MC/NetClassesToCopy/Cloud.txt"));
+            copyFile(new File("./src/MC/NetClasses/CloudController.java"), new File("./src/MC/NetClassesToCopy/CloudController.txt"));
+            copyFile(new File("./src/MC/NetClasses/CloudRemotable.java"), new File("./src/MC/NetClassesToCopy/CloudRemotable.txt"));
+            copyFile(new File("./src/MC/NetClasses/Main.java"), new File("./src/MC/NetClassesToCopy/Main.txt"));
+            copyFile(new File("./src/MC/NetClasses/NetworkManagerClient.java"), new File("./src/MC/NetClassesToCopy/NetworkManagerClient.txt"));
+            copyFile(new File("./src/MC/NetClasses/NetworkManagerServer.java"), new File("./src/MC/NetClassesToCopy/NetworkManagerServer.txt"));
+            copyFile(new File("./src/MC/NetClasses/Pack.java"), new File("./src/MC/NetClassesToCopy/Pack.txt"));
+            copyFile(new File("./src/MC/NetClasses/ResultPack.java"), new File("./src/MC/NetClassesToCopy/ResultPack.txt"));
+
+        } catch (IOException ex) {
+        }
 
     }
     
@@ -69,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Code Offloading");
 
         projectTF.setEditable(false);
         projectTF.setFont(new java.awt.Font("Tahoma", 0, 13));
@@ -81,7 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        convertButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        convertButton.setFont(new java.awt.Font("Tahoma", 1, 13));
         convertButton.setText("Convert");
         convertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,15 +118,15 @@ public class MainFrame extends javax.swing.JFrame {
         serverLable.setFont(new java.awt.Font("Tahoma", 0, 13));
         serverLable.setForeground(java.awt.Color.blue);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel3.setText("Server IP Address:");
 
-        IPAddressTF.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        IPAddressTF.setFont(new java.awt.Font("Tahoma", 0, 13));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Port:");
 
-        PortTF.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        PortTF.setFont(new java.awt.Font("Tahoma", 0, 13));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel5.setText("Wait time for cloud response:");
@@ -122,26 +139,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(projectTF, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectButton))
-                    .addComponent(jLabel1)
-                    .addComponent(clientLable, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addComponent(serverLable, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IPAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(268, 268, 268)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,10 +151,30 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(waitTimeEF, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(waitTimeEF, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(528, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(projectTF, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectButton))
+                    .addComponent(jLabel1)
+                    .addComponent(clientLable, javax.swing.GroupLayout.PREFERRED_SIZE, 847, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(serverLable, javax.swing.GroupLayout.PREFERRED_SIZE, 847, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IPAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,11 +201,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(clientLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(clientLable)
                 .addGap(64, 64, 64)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serverLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(serverLable)
                 .addGap(121, 121, 121))
         );
 
@@ -200,7 +217,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
         );
 
         pack();
@@ -410,22 +427,24 @@ class Modify implements Runnable{
                 copyDirectory(sourceProject, client);
                 new File(client, "src/MC/NetClasses").mkdirs();
 
-                //Just For Test
-                copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File(client, "src/MC/NetClasses/Cloud.java"));
-                copyFile(new File("./src/MC/NetClasses/CloudController.java"), new File(client, "src/MC/NetClasses/CloudController.java"));
-                copyFile(new File("./src/MC/NetClasses/CloudRemotable.java"), new File(client, "src/MC/NetClasses/CloudRemotable.java"));
-                copyFile(new File("./src/MC/NetClasses/NetworkManagerClient.java"), new File(client, "src/MC/NetClasses/NetworkManagerClient.java"));
-                copyFile(new File("./src/MC/NetClasses/Pack.java"), new File(client, "src/MC/NetClasses/Pack.java"));
-                copyFile(new File("./src/MC/NetClasses/ResultPack.java"), new File(client, "src/MC/NetClasses/ResultPack.java"));
-
-
-                //For jar file
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Cloud.txt"), new File(client, "src/MC/NetClasses/Cloud.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudController.txt"), new File(client, "src/MC/NetClasses/CloudController.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudRemotable.txt"), new File(client, "src/MC/NetClasses/CloudRemotable.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerClient.txt"), new File(client, "src/MC/NetClasses/NetworkManagerClient.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Pack.txt"), new File(client, "src/MC/NetClasses/Pack.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/ResultPack.txt"), new File(client, "src/MC/NetClasses/ResultPack.java"));
+                try{
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Cloud.txt"), new File(client, "src/MC/NetClasses/Cloud.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudController.txt"), new File(client, "src/MC/NetClasses/CloudController.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudRemotable.txt"), new File(client, "src/MC/NetClasses/CloudRemotable.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerClient.txt"), new File(client, "src/MC/NetClasses/NetworkManagerClient.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Pack.txt"), new File(client, "src/MC/NetClasses/Pack.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/ResultPack.txt"), new File(client, "src/MC/NetClasses/ResultPack.java"));
+                }catch(Exception ex){
+                    try{
+                        copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File(client, "src/MC/NetClasses/Cloud.java"));
+                        copyFile(new File("./src/MC/NetClasses/CloudController.java"), new File(client, "src/MC/NetClasses/CloudController.java"));
+                        copyFile(new File("./src/MC/NetClasses/CloudRemotable.java"), new File(client, "src/MC/NetClasses/CloudRemotable.java"));
+                        copyFile(new File("./src/MC/NetClasses/NetworkManagerClient.java"), new File(client, "src/MC/NetClasses/NetworkManagerClient.java"));
+                        copyFile(new File("./src/MC/NetClasses/Pack.java"), new File(client, "src/MC/NetClasses/Pack.java"));
+                        copyFile(new File("./src/MC/NetClasses/ResultPack.java"), new File(client, "src/MC/NetClasses/ResultPack.java"));
+                    }catch(Exception exx){
+                    }
+                }
 
                 File NetInfo = new File(client, "src/MC/NetClasses/NetInfo.java");
                 writeNetworkAddress(NetInfo);
@@ -443,27 +462,29 @@ class Modify implements Runnable{
                 copyDirectory(sourceProject, server);
                 new File(server, "src/MC/NetClasses").mkdirs();
 
-                //Just For Test
-                copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File(server, "src/MC/NetClasses/Cloud.java"));
-                copyFile(new File("./src/MC/NetClasses/CloudController.java"), new File(server, "src/MC/NetClasses/CloudController.java"));
-                copyFile(new File("./src/MC/NetClasses/CloudRemotable.java"), new File(server, "src/MC/NetClasses/CloudRemotable.java"));
-                copyFile(new File("./src/MC/NetClasses/Main.java"), new File(server, "src/MC/NetClasses/Main.java"));
-                copyFile(new File("./src/MC/NetClasses/NetworkManagerClient.java"), new File(server, "src/MC/NetClasses/NetworkManagerClient.java"));
-                copyFile(new File("./src/MC/NetClasses/NetworkManagerServer.java"), new File(server, "src/MC/NetClasses/NetworkManagerServer.java"));
-                copyFile(new File("./src/MC/NetClasses/Pack.java"), new File(server, "src/MC/NetClasses/Pack.java"));
-                copyFile(new File("./src/MC/NetClasses/ResultPack.java"), new File(server, "src/MC/NetClasses/ResultPack.java"));
+                try{
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Cloud.txt"), new File(server, "src/MC/NetClasses/Cloud.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudController.txt"), new File(server, "src/MC/NetClasses/CloudController.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudRemotable.txt"), new File(server, "src/MC/NetClasses/CloudRemotable.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Main.txt"), new File(server, "src/MC/NetClasses/Main.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerClient.txt"), new File(server, "src/MC/NetClasses/NetworkManagerClient.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerServer.txt"), new File(server, "src/MC/NetClasses/NetworkManagerServer.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Pack.txt"), new File(server, "src/MC/NetClasses/Pack.java"));
+                    copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/ResultPack.txt"), new File(server, "src/MC/NetClasses/ResultPack.java"));
 
-
-                //For jar file
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Cloud.txt"), new File(server, "src/MC/NetClasses/Cloud.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudController.txt"), new File(server, "src/MC/NetClasses/CloudController.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/CloudRemotable.txt"), new File(server, "src/MC/NetClasses/CloudRemotable.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Main.txt"), new File(server, "src/MC/NetClasses/Main.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerClient.txt"), new File(server, "src/MC/NetClasses/NetworkManagerClient.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/NetworkManagerServer.txt"), new File(server, "src/MC/NetClasses/NetworkManagerServer.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/Pack.txt"), new File(server, "src/MC/NetClasses/Pack.java"));
-//                copyFile2(this.getClass().getResourceAsStream("/MC/NetClassesToCopy/ResultPack.txt"), new File(server, "src/MC/NetClasses/ResultPack.java"));
-
+                }catch(Exception ex){
+                    try{
+                        copyFile(new File("./src/MC/NetClasses/Cloud.java"), new File(server, "src/MC/NetClasses/Cloud.java"));
+                        copyFile(new File("./src/MC/NetClasses/CloudController.java"), new File(server, "src/MC/NetClasses/CloudController.java"));
+                        copyFile(new File("./src/MC/NetClasses/CloudRemotable.java"), new File(server, "src/MC/NetClasses/CloudRemotable.java"));
+                        copyFile(new File("./src/MC/NetClasses/Main.java"), new File(server, "src/MC/NetClasses/Main.java"));
+                        copyFile(new File("./src/MC/NetClasses/NetworkManagerClient.java"), new File(server, "src/MC/NetClasses/NetworkManagerClient.java"));
+                        copyFile(new File("./src/MC/NetClasses/NetworkManagerServer.java"), new File(server, "src/MC/NetClasses/NetworkManagerServer.java"));
+                        copyFile(new File("./src/MC/NetClasses/Pack.java"), new File(server, "src/MC/NetClasses/Pack.java"));
+                        copyFile(new File("./src/MC/NetClasses/ResultPack.java"), new File(server, "src/MC/NetClasses/ResultPack.java"));
+                    }catch(Exception exx){
+                    }
+                }
 
                 NetInfo = new File(server, "src/MC/NetClasses/NetInfo.java");
                 writeNetworkAddress(NetInfo);
@@ -473,6 +494,37 @@ class Modify implements Runnable{
                     em2.execute();
                 } catch (MojoExecutionException ex) {
                 }
+
+                // set main class of server project
+                try{
+                    File projectProperties = new File(server, "nbproject/project.properties");
+
+                    BufferedReader reader = new BufferedReader(new FileReader(projectProperties));
+
+                    StringBuilder nbproject = new StringBuilder();
+                    String line;
+                    boolean IsMainClassSet = false;
+                    while ((line = reader.readLine()) != null) {
+                        if(line.indexOf("main.class") >= 0){
+                            nbproject.append("main.class=MC.NetClasses.Main").append("\n");
+                            IsMainClassSet = true;
+                        }else
+                            nbproject.append(line).append("\n");
+                    }
+
+                    if(!IsMainClassSet){
+                        nbproject.append("\n").append("main.class=MC.NetClasses.Main").append("\n");
+                    }
+
+                    FileWriter fw = new FileWriter(projectProperties);
+                    fw.write(nbproject.toString());
+                    fw.flush();
+                    fw.close();
+
+                }catch(Exception ex){
+                    
+                }
+
                 serverLable.setText(server.toString());
                 
             } catch (Exception ex) {
@@ -486,7 +538,7 @@ class Modify implements Runnable{
 void writeNetworkAddress(File destPath){
         try {
             FileWriter fe = new FileWriter(destPath);
-            
+
             fe.write("package MC.NetClasses;\n\n");
 
             fe.write("public class NetInfo{\n");
@@ -504,6 +556,7 @@ void writeNetworkAddress(File destPath){
 
 
 }
+
 
 /**
     * @param args the command line arguments
