@@ -1,6 +1,6 @@
 Android-based Code Offload Converter
 ====================================
-The tool explores the classes of an Android project and transforms the annotated methods (```xml @Cloud ````) into offloadable components that can be processed remotely by a virtualized Dalvik machine in the cloud 
+The tool explores the classes of an Android project and transforms the annotated methods (```xml @Cloud ```) into offloadable components that can be processed remotely by a virtualized Dalvik machine in the cloud 
 
 
 
