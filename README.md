@@ -14,7 +14,13 @@ JDK : version >= 1.7
 
 Build
 ------------
-Download the source and navigate into the root directory. Execute the code below 
+Download the source and navigate into the root directory. 
+
+```xml
+git clone https://github.com/huberflores/CodeOffloadingAnnotations.git
+````
+
+Build the project with Maven 
 
 ```xml
 mvn clean install
