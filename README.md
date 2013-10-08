@@ -40,6 +40,9 @@ Navigate into the directory via the command prompt and execute the following
 java -jar converter-1.0-jar-with-dependencies.jar
 ````
 
+More example can be found [here](https://github.com/alirezaostovar/codeoffloading)
+
+
 How to cite
 -----------
 This tool was built for comparison purposes between our proposed approach and current code offloading mechanisms. If you are using the tool for your research, please do not forget to cite
