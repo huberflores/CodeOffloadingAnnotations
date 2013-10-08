@@ -39,3 +39,9 @@ Navigate into the directory via the command prompt and execute the following
 ```xml
 java -jar converter-1.0-jar-with-dependencies.jar
 ````
+
+How to cite
+-----------
+This tool was built for comparison purposes between our proposed approach and current code offloading mechanism. If you are using the tool for your research, please do not forget to cite
+
+Flores, Huber, and Satish Srirama. ["Adaptive code offloading for mobile cloud applications: Exploiting fuzzy sets and evidence-based learning."](http://dl.acm.org/citation.cfm?id=2482984) Proceeding of the fourth ACM workshop on Mobile cloud computing and services. ACM, 2013.
