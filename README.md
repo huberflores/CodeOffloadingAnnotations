@@ -40,7 +40,7 @@ Navigate into the directory via the command prompt and execute the following
 java -jar converter-1.0-jar-with-dependencies.jar
 ````
 
-End-to-end example
+[End-to-end example](https://github.com/huberflores/ComputationalOffloadingDemo.git)
 
 More examples can be found [here](https://github.com/alirezaostovar/codeoffloading)
 
