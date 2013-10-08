@@ -40,8 +40,8 @@ Navigate into the directory via the command prompt and execute the following
 java -jar converter-1.0-jar-with-dependencies.jar
 ````
 
-More example can be found [here](https://github.com/alirezaostovar/codeoffloading)
-
+End-to-end example
+More examples can be found [here](https://github.com/alirezaostovar/codeoffloading)
 
 How to cite
 -----------
