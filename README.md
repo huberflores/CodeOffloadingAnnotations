@@ -1,7 +1,7 @@
-Android-based Code Offloader Converter
-=============
-This tool is capable of transforming an android application into a code offloadable application as long as it has
-been annotated with necessary ```xml @Cloud ````  annotation.
+Android-based Code Offload Converter
+====================================
+The tool explores the classes of an Android project and transforms the annotated methods (```xml @Cloud ````) into offloadable components that can be processed remotely by a virtualized Dalvik machine in the cloud 
+
 
 
 Requirements
