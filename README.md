@@ -14,7 +14,7 @@ JDK : version >= 1.7
 
 Build
 ------------
-Download the source and navigate into the root directory.  
+Download the source and navigate into the root directory.
 
 ```xml
 git clone https://github.com/huberflores/CodeOffloadingAnnotations.git
