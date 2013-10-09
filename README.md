@@ -17,18 +17,18 @@ Build
 Download the source and navigate into the root directory.
 
 ```xml
-git clone https://github.com/huberflores/CodeOffloadingAnnotations.git
+$ git clone https://github.com/huberflores/CodeOffloadingAnnotations.git
 ````
 
 Build the project with Maven 
 
 ```xml
-mvn clean install
+$ mvn clean install
 ````
 Then move into the converter directory and run 
 
 ```xml
-mvn org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-2:assembly
+$ mvn org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-2:assembly
 ````
 
 Try Application 
@@ -37,7 +37,7 @@ A file "converter-1.0-jar-with-dependencies" would be created in target folder o
 Navigate into the directory via the command prompt and execute the following
 
 ```xml
-java -jar converter-1.0-jar-with-dependencies.jar
+$ java -jar converter-1.0-jar-with-dependencies.jar
 ````
 
 [End-to-end example](https://github.com/huberflores/ComputationalOffloadingDemo.git)
