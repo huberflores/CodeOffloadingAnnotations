@@ -3,6 +3,10 @@ Android-based Code Offload Converter
 The tool explores the classes of an Android project and transforms the annotated methods (``` @Cloud ```) into offloadable components that can be processed remotely by a virtualized Dalvik machine in the cloud. How to deploy AOSP/CyanogenMod Dalvik in a x86 server can be found here [1](https://gist.github.com/huberflores/4687766), [2](https://gist.github.com/huberflores/4714824)
 
 
+![alt text](https://raw.github.com/huberflores/CodeOffloadingAnnotations/master/UT_OffloadingModel.png "Offloading model")
+
+
+
 Requirements
 -------------
 
@@ -43,9 +47,15 @@ $ java -jar converter-1.0-jar-with-dependencies.jar
 
 More examples can be found [here](https://github.com/alirezaostovar/codeoffloading)
 
+
 How to cite
 -----------
 This tool was built for comparison purposes between our proposed approach and current code offloading mechanisms. If you are using the tool for your research, please do not forget to cite
 
 
 - Flores, Huber, and Satish Srirama. ["Adaptive code offloading for mobile cloud applications: Exploiting fuzzy sets and evidence-based learning."](http://dl.acm.org/citation.cfm?id=2482984) Proceeding of the fourth ACM workshop on Mobile cloud computing and services. ACM, 2013.
+
+
+
+
+
