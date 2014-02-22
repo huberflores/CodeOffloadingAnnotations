@@ -5,6 +5,7 @@ The tool explores the classes of an Android project and transforms the annotated
 
 ![alt text](https://raw.github.com/huberflores/CodeOffloadingAnnotations/master/UT_OffloadingModel.png "Offloading model")
 
+[Figure's reference](http://www.sciencedirect.com/science/article/pii/S0164121213002318)
 
 
 Requirements
