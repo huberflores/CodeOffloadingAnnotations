@@ -48,6 +48,7 @@ $ java -jar converter-1.0-jar-with-dependencies.jar
 
 More examples can be found [here](https://github.com/alirezaostovar/codeoffloading)
 
+More detailed instructions [here](https://gist.github.com/huberflores/9168683)
 
 How to cite
 -----------
